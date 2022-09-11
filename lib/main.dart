@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram/screens/Switch_account..dart';
-import 'package:flutter_instagram/screens/activity_screen.dart';
-import 'package:flutter_instagram/screens/buttomsheet.dart';
-import 'package:flutter_instagram/screens/homescreen.dart';
-import 'package:flutter_instagram/screens/login_screen.dart';
-import 'package:flutter_instagram/screens/search_screen.dart';
-import 'package:flutter_instagram/screens/add_content_screen.dart';
-import 'package:flutter_instagram/screens/user_profile_screen.dart';
 
 void main() {
   runApp(Application());
@@ -36,7 +29,7 @@ class Application extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: ActivityScreen(),
+      home: Switchaccount(),
     );
   }
 }

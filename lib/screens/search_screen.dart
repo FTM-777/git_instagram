@@ -15,7 +15,7 @@ class Search_screen extends StatelessWidget {
               child: _getsearchandrowlist(),
             ),
             SliverToBoxAdapter(
-              child: _getscrollsearch(),
+              child: _getscrollsearch('material'),
             ),
             SliverGrid(
               delegate: SliverChildBuilderDelegate(
@@ -115,7 +115,7 @@ class Search_screen extends StatelessWidget {
     );
   }
 
-  Widget _getscrollsearch() {
+  Widget _getscrollsearch(String name) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 18),
       height: 23,
@@ -136,7 +136,7 @@ class Search_screen extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'test',
+                  name,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,

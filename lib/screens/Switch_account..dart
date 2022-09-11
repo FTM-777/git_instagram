@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_instagram/screens/homescreen.dart';
+import 'package:flutter_instagram/screens/login_screen.dart';
+import 'package:flutter_instagram/screens/main_screen.dart';
 
 class Switchaccount extends StatefulWidget {
   const Switchaccount({Key? key}) : super(key: key);
@@ -58,14 +61,18 @@ class _SwitchaccountState extends State<Switchaccount> {
                             SizedBox(
                               height: 32,
                             ),
-                            Image(
-                              image: AssetImage('images/profile.png'),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Container(
+                                height: 150,
+                                child: Image.asset('images/ftm.jpg'),
+                              ),
                             ),
                             SizedBox(
                               height: 20,
                             ),
                             Text(
-                              'Amirahmad adibi',
+                              'fatemeh abbasnezhad',
                               style: Theme.of(context).textTheme.headline4,
                             ),
                             SizedBox(
@@ -77,7 +84,14 @@ class _SwitchaccountState extends State<Switchaccount> {
                               child: ElevatedButton(
                                 style:
                                     Theme.of(context).elevatedButtonTheme.style,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) {
+                                      return Login_screen();
+                                    }),
+                                  );
+                                },
                                 child: Text(
                                   'Confirm',
                                   style: Theme.of(context).textTheme.headline4,

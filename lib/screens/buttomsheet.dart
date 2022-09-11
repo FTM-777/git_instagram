@@ -107,7 +107,7 @@ class Buttomsheet extends StatelessWidget {
             SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return _getgridecontainer();
+                  return _getgridecontainer('ftm', 'fatemeh');
                 },
                 childCount: 100,
               ),
@@ -145,7 +145,7 @@ class Buttomsheet extends StatelessWidget {
     );
   }
 
-  Widget _getgridecontainer() {
+  Widget _getgridecontainer(String image, String name) {
     return Column(
       children: [
         ClipRRect(
@@ -153,14 +153,14 @@ class Buttomsheet extends StatelessWidget {
           child: Container(
             width: 60,
             height: 60,
-            child: Image.asset('images/profile.png'),
+            child: Image.asset('images/$image.jpg'),
           ),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
-          'Amirahmadadibi',
+          name,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'GB',

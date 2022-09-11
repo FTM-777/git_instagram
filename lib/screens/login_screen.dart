@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_instagram/screens/main_screen.dart';
+
 class Login_screen extends StatefulWidget {
   const Login_screen({Key? key}) : super(key: key);
 
@@ -115,10 +117,12 @@ class _Login_screenState extends State<Login_screen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 43,
-                      ),
+                      padding: EdgeInsets.only(
+                          left: 43,
+                          right: 43,
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: TextField(
+                        style: TextStyle(color: Colors.white),
                         focusNode: negahban1,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
@@ -133,7 +137,7 @@ class _Login_screenState extends State<Login_screen> {
                               width: 3.0,
                             ),
                           ),
-                          labelText: 'Email',
+                          labelText: 'fatemehabbasnezhad@gmail.com',
                           labelStyle: TextStyle(
                             color: negahban1.hasFocus
                                 ? Color(0xffF35383)
@@ -160,6 +164,7 @@ class _Login_screenState extends State<Login_screen> {
                         horizontal: 43,
                       ),
                       child: TextField(
+                        style: TextStyle(color: Colors.white),
                         focusNode: negahban2,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
@@ -174,7 +179,7 @@ class _Login_screenState extends State<Login_screen> {
                               width: 3.0,
                             ),
                           ),
-                          labelText: 'Password',
+                          labelText: '********',
                           labelStyle: TextStyle(
                             color: negahban2.hasFocus
                                 ? Color(0xffF35383)
@@ -203,7 +208,13 @@ class _Login_screenState extends State<Login_screen> {
                   width: 126,
                   child: ElevatedButton(
                     style: Theme.of(context).elevatedButtonTheme.style,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                          return mainscreen();
+                        }),
+                      );
+                    },
                     child: Text(
                       'Sign in',
                       style: Theme.of(context).textTheme.headline4,

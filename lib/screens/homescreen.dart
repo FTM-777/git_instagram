@@ -5,7 +5,9 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_instagram/screens/buttomsheet.dart';
 
 class Homescreen extends StatelessWidget {
-  const Homescreen({Key? key}) : super(key: key);
+  Homescreen(this.context, {Key? key}) : super(key: key);
+
+  var context;
 
   @override
   Widget build(BuildContext context) {
@@ -34,33 +36,6 @@ class Homescreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: ElevatedButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                    barrierColor: Colors.transparent,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (BuildContext biuldcontex) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom),
-                        child: DraggableScrollableSheet(
-                          initialChildSize: 0.4,
-                          minChildSize: 0.2,
-                          maxChildSize: 0.7,
-                          builder: (context, scrollController) {
-                            return Buttomsheet(scrollController);
-                          },
-                        ),
-                      );
-                    },
-                  );
-                },
-                child: Text('buttomsheet'),
-              ),
-            ),
-            SliverToBoxAdapter(
               child: _getstory(),
             ),
             SliverList(
@@ -74,7 +49,31 @@ class Homescreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 500,
-                        child: _getpostview(),
+                        child: _getpostview(8),
+                      ),
+                      SizedBox(
+                        height: 45,
+                        child: _getheader(),
+                      ),
+                      SizedBox(
+                        height: 500,
+                        child: _getpostview(5),
+                      ),
+                      SizedBox(
+                        height: 45,
+                        child: _getheader(),
+                      ),
+                      SizedBox(
+                        height: 500,
+                        child: _getpostview(9),
+                      ),
+                      SizedBox(
+                        height: 45,
+                        child: _getheader(),
+                      ),
+                      SizedBox(
+                        height: 500,
+                        child: _getpostview(7),
                       ),
                     ],
                   );
@@ -91,16 +90,28 @@ class Homescreen extends StatelessWidget {
     return Container(
       height: 120,
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: 15,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return index == 0 ? _getaddstorybox() : _getfalowing();
+          return index == 0
+              ? _getaddstorybox()
+              : index == 1
+                  ? _getfalowing(1)
+                  : index == 2
+                      ? _getfalowing(2)
+                      : index == 3
+                          ? _getfalowing(3)
+                          : index == 4
+                              ? _getfalowing(8)
+                              : index == 5
+                                  ? _getfalowing(5)
+                                  : _getfalowing(3);
         },
       ),
     );
   }
 
-  Widget _getpostview() {
+  Widget _getpostview(int image) {
     return Center(
       child: Container(
         margin: EdgeInsets.fromLTRB(0, 5, 0, 22),
@@ -113,7 +124,10 @@ class Homescreen extends StatelessWidget {
               top: 0,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.asset('images/post_cover.png'),
+                child: Container(
+                  height: 470,
+                  child: Image.asset('images/$image.png'),
+                ),
               ),
             ),
             Positioned(
@@ -175,7 +189,33 @@ class Homescreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Image.asset('images/icon_share.png'),
+                        InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                              barrierColor: Colors.transparent,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (BuildContext biuldcontex) {
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
+                                  child: DraggableScrollableSheet(
+                                    initialChildSize: 0.4,
+                                    minChildSize: 0.2,
+                                    maxChildSize: 0.7,
+                                    builder: (context, scrollController) {
+                                      return Buttomsheet(scrollController);
+                                    },
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Image.asset('images/icon_share.png'),
+                        ),
                         Image.asset('images/icon_save.png'),
                       ],
                     ),
@@ -202,7 +242,7 @@ class Homescreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'amirahmadadibi',
+                  'fatemeh abbasnezhad',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -210,7 +250,7 @@ class Homescreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'امیراحمد برنامه نویس موبایل',
+                  'فاطمه عباس نژاد بنام برنامه نویس',
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SM',
@@ -243,15 +283,14 @@ class Homescreen extends StatelessWidget {
           child: Container(
             height: 38,
             width: 38,
-            color: Colors.amber,
-            child: Image.asset('images/profile.png'),
+            child: Image.asset('images/ftm.jpg'),
           ),
         ),
       ),
     );
   }
 
-  Widget _getfalowing() {
+  Widget _getfalowing(int image) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Column(
@@ -268,8 +307,7 @@ class Homescreen extends StatelessWidget {
               child: Container(
                 height: 54,
                 width: 54,
-                color: Colors.amber,
-                child: Image.asset('images/profile.png'),
+                child: Image.asset('images/$image.png'),
               ),
             ),
           ),
